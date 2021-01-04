@@ -76,12 +76,56 @@ results = julia.dir$eval("res = fit(LinearMixedModel, form, sleepstudy)",need_re
 # Get summary 
 julia.dir$eval("res")
 
+## Julia Object of type LinearMixedModel{Float64}.
+## Linear mixed model fit by maximum likelihood
+##  Reaction ~ 1 + Days + (1 + Days | Subject)
+##    logLik   -2 logLik     AIC       AICc        BIC    
+##   -875.9697  1751.9393  1763.9393  1764.4249  1783.0971
+## 
+## Variance components:
+##             Column    Variance Std.Dev.   Corr.
+## Subject  (Intercept)  565.51067 23.78047
+##          Days          32.68212  5.71683 +0.08
+## Residual              654.94145 25.59182
+##  Number of obs: 180; levels of grouping factors: 18
+## 
+##   Fixed-effects parameters:
+## --------------------------------------------------
+##                 Coef.  Std. Error      z  Pr(>|z|)
+## --------------------------------------------------
+## (Intercept)  251.405      6.63226  37.91    <1e-99
+## Days          10.4673     1.50224   6.97    <1e-11
+## --------------------------------------------------
+
 # Get the estimated fixed effects
 beta.fixed = julia_eval("coef(res)")
 beta.fixed 
+
+## [1] 251.40510  10.46729
+
 # Get the estimated random effects
 beta.random = t(julia_eval("ranef(res)")[1])
 beta.random
+
+##             [,1]        [,2]
+##  [1,]   2.815819   9.0755116
+##  [2,] -40.048442  -8.6440794
+##  [3,] -38.433064  -5.5133980
+##  [4,]  22.832112  -4.6587173
+##  [5,]  21.549840  -2.9444928
+##  [6,]   8.815541  -0.2352007
+##  [7,]  16.441908  -0.1588087
+##  [8,]  -6.996671   1.0327272
+##  [9,]  -1.037588 -10.5994157
+## [10,]  34.666294   8.6323845
+## [11,] -24.558026   1.0643762
+## [12,] -12.334467   6.4716750
+## [13,]   4.273998  -2.9553318
+## [14,]  20.622181   3.5617128
+## [15,]   3.258535   0.8717108
+## [16,] -24.710141   4.6597008
+## [17,]   0.723262  -0.9710526
+## [18,]  12.118908   1.3106981
 ```
 ### Getting the summary of the linear-mixed models of Julia using R.
 
@@ -115,6 +159,35 @@ We can estimate the linear mixed-model using `Julia` on `R`, and gettting the su
 julia.dir$library("JellyMe4")
 fit = jmer(formula(Reaction ~ Days + (Days | Subject)), sleepstudy, REML=TRUE)
 summary(fit)
+
+## Linear mixed model fit by REML ['lmerMod']
+## Formula: Reaction ~ 1 + Days + (1 + Days | Subject)
+##    Data: jellyme4_data
+## Control: lmerControl(optimizer = "nloptwrap", optCtrl = list(maxeval = 1),  
+##     calc.derivs = FALSE, check.nobs.vs.nRE = "warning")
+## 
+## REML criterion at convergence: 1743.6
+## 
+## Scaled residuals: 
+##     Min      1Q  Median      3Q     Max 
+## -3.9536 -0.4634  0.0231  0.4634  5.1793 
+## 
+## Random effects:
+##  Groups   Name        Variance Std.Dev. Corr
+##  Subject  (Intercept) 612.10   24.741       
+##           Days         35.07    5.922   0.07
+##  Residual             654.94   25.592       
+## Number of obs: 180, groups:  Subject, 18
+## 
+## Fixed effects:
+##             Estimate Std. Error t value
+## (Intercept)  251.405      6.825  36.838
+## Days          10.467      1.546   6.771
+## 
+## Correlation of Fixed Effects:
+##      (Intr)
+## Days -0.138
+## optimizer (LN_BOBYQA) convergence code: 5 (fit with MixedModels.jl)
 ```
 
 # 2. Conclusion.
