@@ -84,6 +84,41 @@ beta.random = t(julia_eval("ranef(res)")[1])
 beta.random
 ```
 
+## Julia Object of type LinearMixedModel{Float64}.
+## Linear mixed model fit by maximum likelihood
+##  Reaction ~ 1 + Days + (1 + Days | Subject)
+##    logLik   -2 logLik     AIC       AICc        BIC    
+##   -875.9697  1751.9393  1763.9393  1764.4249  1783.0971
+## 
+## Variance components:
+##             Column    Variance Std.Dev.   Corr.
+## Subject  (Intercept)  565.51067 23.78047
+##          Days          32.68212  5.71683 +0.08
+## Residual              654.94145 25.59182
+##  Number of obs: 180; levels of grouping factors: 18
+## 
+##   Fixed-effects parameters:
+## --------------------------------------------------
+##                 Coef.  Std. Error      z  Pr(>|z|)
+## --------------------------------------------------
+## (Intercept)  251.405      6.63226  37.91    <1e-99
+## Days          10.4673     1.50224   6.97    <1e-11
+## --------------------------------------------------
+
+```{r, echo=TRUE, warning=FALSE, eval=TRUE}
+results = julia.dir$eval("res = fit(LinearMixedModel, form, sleepstudy)",need_return = c("Julia"))
+
+# Get summary 
+julia.dir$eval("res")
+
+# Get the estimated fixed effects
+beta.fixed = julia_eval("coef(res)")
+beta.fixed 
+# Get the estimated random effects
+beta.random = t(julia_eval("ranef(res)")[1])
+beta.random
+```
+
 ### Getting the summary of the linear-mixed models of Julia using R.
 
 To get a summary in the same form as `lme4`, you can use the library `JellyMe4`. I am using here the code available [here](https://rdrr.io/github/palday/jlme/src/R/JellyMe4.R). First, we need to compile the function `jmer`:
