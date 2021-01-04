@@ -1,4 +1,4 @@
-# Mixed Models with Rand Julia
+# Estimating Linear Mixed-Models with Julia using R
 A tutorial illustrating how to estimate linear mixed models using Julia in R.
 
 # Overview
