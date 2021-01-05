@@ -129,7 +129,7 @@ beta.random
 ```
 ### Getting the summary of the linear-mixed models of Julia using R.
 
-To get a summary in the same form as `lme4`, you can use the library `JellyMe4`. I am using here the code available [here](https://rdrr.io/github/palday/jlme/src/R/JellyMe4.R). First, we need to compile the function `jmer`:
+To get a summary in the same form as `lme4`, you can use the library `JellyMe4`. I am using the code available [here](https://rdrr.io/github/palday/jlme/src/R/JellyMe4.R). First, we need to compile the function `jmer`:
 
 ```{r, echo=TRUE, warning=FALSE, eval=TRUE}
 jmer <- function(formula, data, REML=TRUE){
