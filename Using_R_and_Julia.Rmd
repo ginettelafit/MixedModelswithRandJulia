@@ -38,7 +38,7 @@ if ( length(missing_pkgs <- setdiff(packages, rownames(installed.packages()))) >
 It is necessary to use the function `dyn.load` to load foreign function interfaces. Here, it is necessary to set the folder with the library `libopenlibm.DLL`.
 
 ```{r, echo=TRUE, warning=TRUE, results="hide", message=FALSE}
-dyn.load("C:/Users/u0119584/AppData/Local/Programs/Julia 1.5.3/bin/libopenlibm.DLL")
+dyn.load("C:/Users/AppData/Local/Programs/Julia 1.5.3/bin/libopenlibm.DLL")
 
 library(JuliaCall)
 library(lme4)
@@ -49,7 +49,7 @@ library(lme4)
 Next, we need to call `Julia`. In some cases, it will only be necessary to set up `Julia` in `R` by using `julia_setup()`. In my case, I need to specify the folder in which Julia is located.
 
 ```{r, echo=TRUE, warning=TRUE, results="hide", message=FALSE}
-julia.dir = julia_setup(JULIA_HOME = "C:\\Users\\u0119584\\AppData\\Local\\Programs\\Julia 1.5.3\\bin")
+julia.dir = julia_setup(JULIA_HOME = "C:\\Users\\AppData\\Local\\Programs\\Julia 1.5.3\\bin")
 ```
 
 
