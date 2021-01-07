@@ -3,7 +3,7 @@ A tutorial illustrating how to estimate linear mixed models using Julia in R.
 
 # Overview
 
-In this tutorial, I will show how to estimate linear-mixed models with `Julia` using `R`. I am assuming that the necessary libraries are already installed in Julia. Therefore, you should first install the following packages in Julia: `RCall`, `MixedModels`, and `JellyMe4`. More information can be found here [link](https://rpubs.com/dmbates/377897) and here [link](https://github.com/palday/JellyMe4.jl).
+In this tutorial, I will show how to estimate linear-mixed models with `Julia` using `R`. I am assuming that the necessary libraries are already installed in Julia. Therefore, you should first install the following packages in Julia: `RCall`, `MixedModels`, and `JellyMe4`. More information can be found [here](https://rpubs.com/dmbates/377897) and [here](https://github.com/palday/JellyMe4.jl).
 
 # Outline
 
