@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Overview
 
-In this tutorial, I will show how to estimate linear-mixed models with `Julia` using `R`. I am assuming that the necessary libraries are already installed in Julia. Therefore, you should first install the following packages in Julia: `RCall` and `MixedModels`. More information can be found in this [link](https://rpubs.com/dmbates/377897).
+In this tutorial, I will show how to estimate linear-mixed models with `Julia` using `R`. I am assuming that the necessary libraries are already installed in Julia. Therefore, you should first install the following packages in Julia: `RCall`, `JellyMe4` and `MixedModels`. More information can be found in this [link](https://rpubs.com/dmbates/377897).
 
 # Outline
 
